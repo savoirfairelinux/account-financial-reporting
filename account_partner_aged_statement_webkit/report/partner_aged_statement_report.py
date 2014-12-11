@@ -178,7 +178,7 @@ class PartnerAgedTrialReport(aged_trial_report):
         res = super(PartnerAgedTrialReport, self).set_context(
             objects, data, ids, report_type=report_type)
         self.orig_query = self.query
-        
+
         return res
 
     def _get_lines(self, form, partner):
