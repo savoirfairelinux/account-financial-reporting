@@ -83,6 +83,7 @@ class PartnersOpenInvoicesWebkit(report_sxw.rml_parse,
                  ' '.join((_('Page'), '[page]', _('of'), '[topage]'))),
                 ('--footer-line',),
             ],
+            'get_supplier_invoice_number': self._get_supplier_invoice_number,
         })
 
     def _group_lines_by_currency(self, account_br):
@@ -250,6 +251,12 @@ class PartnersOpenInvoicesWebkit(report_sxw.rml_parse,
                 res[account_id][partner_id] = lines
         return res
 
+    def _get_supplier_invoice_number(self, invoice_id):
+        if not invoice_id:
+            return False
+
+        return self.pool.get('account.invoice').browse(
+            self.cursor, self.uid, invoice_id).supplier_invoice_number
 
 HeaderFooterTextWebKitParser(
     'report.account.account_report_open_invoices_webkit',

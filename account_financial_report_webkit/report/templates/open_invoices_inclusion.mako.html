@@ -38,8 +38,17 @@
                 <div class="act_as_cell" style="width: 120px;">${_('Partner')}</div>
                 ## move reference
                 <div class="act_as_cell" style="width: 100px;">${_('Reference')}</div>
+                %if account.type == 'payable':
+                ## supplier_invoice_number
+                <div class="act_as_cell" style="width: 80px;">${_('Supplier Invoice')}</div>
+
+                ## label
+                <div class="act_as_cell" style="width: 100px;">${_('Label')}</div>
+                %else:
                 ## label
                 <div class="act_as_cell" style="width: 180px;">${_('Label')}</div>
+                %endif
+
                 ## reconcile
                 <div class="act_as_cell" style="width: 80px;">${_('Rec.')}</div>
                 ## maturity
@@ -90,8 +99,13 @@
                   <div class="act_as_cell overflow_ellipsis">${line.get('partner_name') or ''}</div>
                   ## move reference
                   <div class="act_as_cell">${line.get('lref') or ''}</div>
+                  %if account.type == 'payable':
+                  ## supplier_invoice_number
+                  <div class="act_as_cell">${get_supplier_invoice_number(line.get('invoice_id', False)) or ''}</div>
+                  %endif
                   ## label
                   <div class="act_as_cell">${label}</div>
+
                   ## reconcile
                   <div class="act_as_cell">${line.get('rec_name') or ''}</div>
                   ## maturity date
@@ -124,6 +138,10 @@
               <div class="act_as_cell"></div>
               ## move reference
               <div class="act_as_cell"></div>
+              %if account.type == 'payable':
+              ## supplier_invoice_number
+              <div class="act_as_cell"></div>
+              %endif
               ## label
               <div class="act_as_cell">${_('Cumulated Balance on Partner')}</div>
               ## reconcile
