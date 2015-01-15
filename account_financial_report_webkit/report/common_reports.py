@@ -533,6 +533,7 @@ SELECT l.id AS id,
             i.id AS invoice_id,
             i.type AS invoice_type,
             i.number AS invoice_number,
+            i.origin,
             l.date_maturity
 FROM account_move_line l
     JOIN account_move m on (l.move_id=m.id)

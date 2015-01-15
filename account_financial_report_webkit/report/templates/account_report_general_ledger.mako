@@ -105,7 +105,9 @@
                         ## partner
                         <div class="act_as_cell" style="width: 140px;">${_('Partner')}</div>
                         ## move reference
-                        <div class="act_as_cell" style="width: 140px;">${_('Reference')}</div>
+                        <div class="act_as_cell" style="width: 80px;">${_('Reference')}</div>
+                        ## origin
+                        <div class="act_as_cell" style="width: 60px;">${_('Origin')}</div>
                         ## label
                         <div class="act_as_cell" style="width: 160px;">${_('Label')}</div>
                         ## counterpart
@@ -194,6 +196,8 @@
                           <div class="act_as_cell overflow_ellipsis">${line.get('partner_name') or ''}</div>
                           ## move reference
                           <div class="act_as_cell">${line.get('lref') or ''}</div>
+                          ## origin
+                          <div class="act_as_cell">${line.get('origin') or ''}</div>
                           ## label
                           <div class="act_as_cell">${label}</div>
                           ## counterpart
